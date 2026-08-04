@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "live.ktunotes.twa",
+    "sha256_cert_fingerprints": ["69:E7:D4:7B:81:19:00:AC:14:30:2D:43:11:D5:B5:5E:67:4A:5B:A4:4F:CC:35:3A:38:D6:40:4F:6E:BF:8B:64"]
+  }
+}]

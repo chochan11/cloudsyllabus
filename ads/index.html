@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Advertise with Us | KTUNOTES.LIVE</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --muted: #64748b;
+            --primary: #001f3f;
+            --accent: #1e90ff;
+            --card: #ffffff;
+            --shadow: rgba(0,0,0,.1);
+            --glass: rgba(0,0,0,.05);
+            --border: rgba(0,0,0,.12);
+        }
+        body.dark {
+            --bg: #0b0f15;
+            --text: #e6eef8;
+            --muted: #9fb0c8;
+            --primary: #9fc5ff;
+            --accent: #4aa3ff;
+            --card: #0f1720;
+            --shadow: rgba(0,0,0,.6);
+            --glass: rgba(255,255,255,.06);
+            --border: rgba(255,255,255,.1);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        /* THEME BUTTON */
+        .theme-switch {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        /* HERO */
+        .ad-hero {
+            padding: 60px 15px 30px;
+            text-align: center;
+        }
+        .ad-hero h1 {
+            font-family: Poppins, sans-serif;
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .ad-hero p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: auto;
+            font-size: 1.1rem;
+        }
+
+        /* STATS - Fixed for Mobile */
+        .stats-container {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 900px;
+            margin-inline: auto;
+        }
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+        .stat-card i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .stat-card h2 { margin: 0; font-weight: 800; font-size: 1.5rem; }
+        .stat-card span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+
+        /* PRICING */
+        .pricing-section {
+            padding: 40px 15px 60px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .price-card {
+            background: var(--card);
+            border-radius: 25px;
+            padding: 40px 25px;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 35px var(--shadow);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .price-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+        .price-card h3 { font-family: Poppins; font-size: 1.5rem; margin-top: 0; }
+        .cost {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin: 15px 0;
+            color: var(--text);
+        }
+        .cost span { font-size: 1rem; color: var(--muted); }
+
+        .features-list {
+            padding: 0;
+            list-style: none;
+            margin: 20px 0 30px;
+            text-align: left;
+        }
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .features-list i { color: #25D366; }
+
+        .cta-btn {
+            margin-top: auto;
+            text-align: center;
+            padding: 16px;
+            background: var(--primary);
+            color: #fff !important;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+        .featured .cta-btn { background: var(--accent); }
+        .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        /* PARTNERS */
+        .partners-section {
+            padding: 100px 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--glass);
+        }
+        .partners-section::before {
+            content: "PARTNERS";
+            position: absolute;
+            font-family: Poppins;
+            font-size: 18vw;
+            font-weight: 900;
+            color: var(--glass);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        .partners-title {
+            font-family: Poppins;
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .partners-title span { color: var(--accent); }
+
+        .logo-slider { overflow: hidden; width: 100%; position: relative; }
+        .logo-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+        .partner-card {
+            min-width: 220px;
+            background: var(--card);
+            border-radius: 24px;
+            padding: 30px 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+        .logo-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .logo-circle img { max-width: 75%; max-height: 75%; object-fit: contain; }
+        .partner-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr; /* Stacked on mobile as requested */
+                max-width: 300px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr; /* Stacked pricing boxes */
+                gap: 20px;
+            }
+            .price-card.featured { transform: scale(1); }
+            .ad-hero { padding-top: 40px; }
+            .partners-section::before { font-size: 25vw; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 15px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle Theme">
+    <i id="theme-icon" class="fas fa-moon"></i>
+</button>
+
+<section class="ad-hero">
+    <h1>Boost Your Brand</h1>
+    <p>Reach 7,000+ B.Tech Engineering Students (2024 Scheme) across Kerala with KTUNOTES.LIVE</p>
+
+    <div class="stats-container">
+        <div class="stat-card"><i class="fas fa-users"></i><h2>7,000+</h2><span>WhatsApp Members</span></div>
+        <div class="stat-card"><i class="fas fa-chart-line"></i><h2>1 Lakh+</h2><span>Monthly Traffic</span></div>
+        <div class="stat-card"><i class="fas fa-graduation-cap"></i><h2>2024 Scheme</h2><span>Target Audience</span></div>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <h2 style="text-align:center; font-family:Poppins; font-size: 2.2rem;">Our Packages</h2>
+    <p style="text-align:center; color:var(--muted); margin-top: -10px;">Valid for one full semester</p>
+
+    <div class="pricing-grid">
+        <div class="price-card">
+            <h3>Website Only</h3>
+            <div class="cost">₹3,000<span>/sem</span></div>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> Ads displayed on website</li>
+                <li><i class="fas fa-check-circle"></i> Study Material Pages</li>
+                <li><i class="fas fa-check-circle"></i> 1 Lakh+ Monthly Traffic</li>
+                <li><i class="fas fa-check-circle"></i> Consistent Promotion</li>
+            </ul>
+            <a class="cta-btn" href="https://wa.me/919497838460?text=Hello%2C%20I%20am%20interested%20in%20the%20*Website%20Promotion%20Only*%20package%20(₹3000/sem)%20on%20KTUNOTES.LIVE.">Get Started</a>
+        </div>
+
+        <div class="price-card featured">
+            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 4px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Best Value</div>
+            <h3>Web + WhatsApp</h3>
+            <div class="cost">₹4,000<span>/sem</span></div>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> Ads on Website + 11 Groups</li>
+                <li><i class="fas fa-check-circle"></i> Official WhatsApp Channel</li>
+                <li><i class="fas fa-check-circle"></i> Posted Twice a Week</li>
+                <li><i class="fas fa-check-circle"></i> Full Semester Coverage</li>
+            </ul>
+            <a class="cta-btn" href="https://wa.me/919497838460?text=Hello%2C%20I%20am%20interested%20in%20the%20*Website%20%2B%20WhatsApp%20Promotion*%20package%20(₹4000/sem)%20on%20KTUNOTES.LIVE.">Claim Package</a>
+        </div>
+
+        <div class="price-card">
+            <h3>WhatsApp Only</h3>
+            <div class="cost">₹3,500<span>/sem</span></div>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> 11 WhatsApp Groups</li>
+                <li><i class="fas fa-check-circle"></i> 1 Official Channel</li>
+                <li><i class="fas fa-check-circle"></i> Posted Twice a Week</li>
+                <li><i class="fas fa-check-circle"></i> High Student Engagement</li>
+            </ul>
+            <a class="cta-btn" href="https://wa.me/919497838460?text=Hello%2C%20I%20am%20interested%20in%20the%20*WhatsApp%20Promotion%20Only*%20package%20(₹3500/sem)%20on%20KTUNOTES.LIVE.">Get Started</a>
+        </div>
+    </div>
+</section>
+
+<section class="partners-section">
+    <h2 class="partners-title">OUR <span>PARTNERS</span></h2>
+
+    <div class="logo-slider">
+        <div class="logo-track">
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/TEKZ.jpg" alt="TEK-Z"></div><div class="partner-name">TEK-Z</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/PRIMINENT.png" alt="PRIMINENT"></div><div class="partner-name">PRIMINENT</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/EQUNIOX.png" alt="EQUINOX"></div><div class="partner-name">EQUINOX</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/KLAW.JPG" alt="KLAW"></div><div class="partner-name">KLAW</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/SNAPLEARN.jpg" alt="SNAPLEARN"></div><div class="partner-name">SNAPLEARN</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/FAWSTECH INNOVATIONS.png" alt="FAWSTECH"></div><div class="partner-name">FAWSTECH INNOVATIONS</div></div>
+
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/TEKZ.jpg"></div><div class="partner-name">TEK-Z</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/PRIMINENT.png"></div><div class="partner-name">PRIMINENT</div></div>
+            <div class="partner-card"><div class="logo-circle"><img src="/ads/EQUNIOX.png"></div><div class="partner-name">EQUINOX</div></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 KTUNOTES.LIVE<br></footer>
+
+<script>
+    function toggleTheme(){
+        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        document.getElementById("theme-icon").className = isDark ? "fas fa-sun" : "fas fa-moon";
+    }
+
+    // Initialize Theme
+    if(localStorage.getItem("theme") === "dark"){
+        document.body.classList.add("dark");
+        document.getElementById("theme-icon").className = "fas fa-sun";
+    }
+</script>
+
+</body>
+</html>
